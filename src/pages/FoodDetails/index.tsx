@@ -103,7 +103,7 @@ const FoodDetails: React.FC = () => {
       if (each.id === id) {
         return {
           ...each,
-          quantity: each.quantity <= 1 ? 0 : each.quantity - 1,
+          quantity: each.quantity < 2 ? 0 : each.quantity - 1,
         };
       }
       return each;
@@ -113,11 +113,11 @@ const FoodDetails: React.FC = () => {
   }
 
   function handleIncrementFood(): void {
-    // Increment food quantity
+    setFoodQuantity(state => state + 1);
   }
 
   function handleDecrementFood(): void {
-    // Decrement food quantity
+    setFoodQuantity(state => (state < 2 ? 1 : state - 1));
   }
 
   const toggleFavorite = useCallback(() => {
