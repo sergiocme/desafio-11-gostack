@@ -88,11 +88,28 @@ const FoodDetails: React.FC = () => {
   }, [routeParams]);
 
   function handleIncrementExtra(id: number): void {
-    // Increment extra quantity
+    const updatedExtras = extras.map(each => {
+      if (each.id === id) {
+        return { ...each, quantity: each.quantity + 1 };
+      }
+      return each;
+    });
+
+    setExtras(updatedExtras);
   }
 
   function handleDecrementExtra(id: number): void {
-    // Decrement extra quantity
+    const updatedExtras = extras.map(each => {
+      if (each.id === id) {
+        return {
+          ...each,
+          quantity: each.quantity <= 1 ? 0 : each.quantity - 1,
+        };
+      }
+      return each;
+    });
+
+    setExtras(updatedExtras);
   }
 
   function handleIncrementFood(): void {
