@@ -80,7 +80,12 @@ const FoodDetails: React.FC = () => {
         quantity: 0,
       }));
 
-      setFood(data);
+      const formattedFood = {
+        ...data,
+        formattedPrice: formatValue(data.price),
+      };
+
+      setFood(formattedFood);
       setExtras(formattedExtras);
     }
 
